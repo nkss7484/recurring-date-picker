@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { motion } from 'framer-motion';
 import RecurrenceOptions from './RecurrenceOptions';
 import CustomizationPanel from './CustomizationPanel';
 import WeekdaySelector from './WeekdaySelector';
 import DateRangePicker from './DateRangePicker';
 import CalendarPreview from './CalendarPreview';
 import { generateRecurringDates } from '../utils/recurrenceUtils';
-import { motion } from 'framer-motion';
 
 const RecurringDatePicker = () => {
   const [recurrenceType, setRecurrenceType] = useState<'daily' | 'weekly' | 'monthly' | 'yearly'>('daily');
@@ -33,6 +33,7 @@ const RecurringDatePicker = () => {
         interval,
         startDate,
         endDate,
+        weekdays: recurrenceType === 'weekly' ? selectedWeekdays : undefined
       });
 
       setDates(generated);
@@ -65,7 +66,7 @@ const RecurringDatePicker = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-3xl mx-auto my-10 p-8 bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl rounded-3xl border border-indigo-100 dark:border-gray-700 space-y-8"
+      className="max-w-4xl mx-auto my-10 p-8 bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl rounded-3xl border border-indigo-100 dark:border-gray-700 space-y-8"
     >
       <div className="text-center">
         <motion.h2 
@@ -95,10 +96,19 @@ const RecurringDatePicker = () => {
               </span>
               Schedule Settings
             </h3>
-            <RecurrenceOptions value={recurrenceType} onChange={setRecurrenceType} />
-            <CustomizationPanel value={interval} onChange={setInterval} />
+            <RecurrenceOptions 
+              value={recurrenceType} 
+              onChange={(type) => setRecurrenceType(type)} 
+            />
+            <CustomizationPanel 
+              value={interval} 
+              onChange={(value) => setInterval(value)} 
+            />
             {recurrenceType === 'weekly' && (
-              <WeekdaySelector selected={selectedWeekdays} onChange={setSelectedWeekdays} />
+              <WeekdaySelector 
+                selected={selectedWeekdays} 
+                onChange={(days) => setSelectedWeekdays(days)} 
+              />
             )}
           </motion.div>
 
@@ -117,8 +127,8 @@ const RecurringDatePicker = () => {
             <DateRangePicker
               startDate={startDate}
               endDate={endDate}
-              onStartDateChange={setStartDate}
-              onEndDateChange={setEndDate}
+              onStartDateChange={(date) => setStartDate(date)}
+              onEndDateChange={(date) => setEndDate(date)}
             />
           </motion.div>
         </div>
