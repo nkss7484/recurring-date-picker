@@ -1,103 +1,202 @@
-import Image from "next/image";
+import Navbar from '../components/Navbar';
+import RecurringDatePicker from '../components/RecurringDatePicker';
+import '../styles/globals.css';
+import Head from 'next/head';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <>
+      <Head>
+        <title>Recurring Events Manager - Simplify Your Scheduling</title>
+        <meta name="description" content="Manage recurring events and appointments with ease" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+      </Head>
+      
+      <Navbar />
+      
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-10 px-4">
+        {/* Hero Section */}
+        <section className="max-w-6xl mx-auto text-center mb-16">
+          <h1 className="text-5xl font-bold text-purple-800 mb-6 font-montserrat">
+            Simplify Your <span className="text-blue-600 font-dancing">Recurring</span> Events
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 font-poppins">
+            The ultimate tool to manage repeating appointments, meetings, and events with ease
+          </p>
+          <div className="relative h-96 w-full rounded-xl overflow-hidden shadow-2xl">
+            <Image 
+              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Calendar and scheduling concept"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <div className="absolute inset-0 bg-purple-900 opacity-30"></div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="max-w-6xl mx-auto mb-20">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 font-montserrat">
+            Powerful <span className="text-purple-600 font-dancing">Features</span> For Your Scheduling Needs
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <Image 
+                  src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                  alt="Recurring events"
+                  width={80}
+                  height={80}
+                  className="rounded-full mx-auto"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-blue-700 mb-3 font-montserrat">Flexible Recurrence</h3>
+              <p className="text-gray-600 font-poppins">
+                Set up events that repeat daily, weekly, monthly, or with custom patterns. Never miss important recurring appointments again.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <Image 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                  alt="Calendar visualization"
+                  width={80}
+                  height={80}
+                  className="rounded-full mx-auto"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-blue-700 mb-3 font-montserrat">Visual Calendar</h3>
+              <p className="text-gray-600 font-poppins">
+                See all your recurring events in a beautiful, intuitive calendar view. Drag and drop to reschedule with ease.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <Image 
+                  src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                  alt="Notifications"
+                  width={80}
+                  height={80}
+                  className="rounded-full mx-auto"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-blue-700 mb-3 font-montserrat">Smart Reminders</h3>
+              <p className="text-gray-600 font-poppins">
+                Get notified before each event. Customize reminders by email, SMS, or push notifications.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="max-w-6xl mx-auto mb-20 bg-white rounded-xl shadow-lg p-8">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 font-montserrat">
+            How Our <span className="text-blue-600 font-dancing">Recurring Date Picker</span> Works
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h3 className="text-2xl font-semibold text-purple-700 mb-4 font-montserrat">1. Create Your Event</h3>
+              <p className="text-gray-600 mb-6 font-poppins">
+                Start by naming your event and setting the initial date. Our intuitive interface guides you through each step.
+              </p>
+              
+              <h3 className="text-2xl font-semibold text-purple-700 mb-4 font-montserrat">2. Set Recurrence Pattern</h3>
+              <p className="text-gray-600 mb-6 font-poppins">
+                Choose how often your event repeats - daily, weekly, monthly, or create custom patterns like "every other Tuesday".
+              </p>
+              
+              <h3 className="text-2xl font-semibold text-purple-700 mb-4 font-montserrat">3. Review & Save</h3>
+              <p className="text-gray-600 font-poppins">
+                Preview all occurrences before saving. Edit individual instances or the entire series anytime.
+              </p>
+            </div>
+            
+            <div className="relative h-80">
+              <Image 
+                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                alt="Person using calendar app"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Demo Section */}
+        <section className="max-w-6xl mx-auto mb-20">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 font-montserrat">
+            Try Our <span className="text-purple-600 font-dancing">Recurring Date Picker</span>
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto font-poppins">
+            Experience the power of our tool firsthand. Create a sample recurring event below to see how it works.
+          </p>
+          
+          <div className="bg-white p-8 rounded-xl shadow-lg">
+            <RecurringDatePicker />
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 font-montserrat">
+            What Our <span className="text-blue-600 font-dancing">Users</span> Say
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-500">
+              <p className="text-gray-700 italic mb-4 font-poppins">
+                "This tool has completely transformed how I manage my weekly team meetings. Setting up recurring sessions takes seconds now!"
+              </p>
+              <div className="flex items-center">
+                <Image 
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Sarah Johnson"
+                  width={48}
+                  height={48}
+                  className="rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-800 font-montserrat">Sarah Johnson</h4>
+                  <p className="text-purple-600 text-sm font-poppins">Project Manager</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500">
+              <p className="text-gray-700 italic mb-4 font-poppins">
+                "As a fitness instructor, I have classes at different times each week. This app handles all my scheduling needs perfectly."
+              </p>
+              <div className="flex items-center">
+                <Image 
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Michael Chen"
+                  width={48}
+                  height={48}
+                  className="rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-800 font-montserrat">Michael Chen</h4>
+                  <p className="text-blue-600 text-sm font-poppins">Fitness Instructor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="max-w-6xl mx-auto px-4 text-center font-poppins">
+          <p>© {new Date().getFullYear()} Recurring Events Manager. All rights reserved.</p>
+          <p className="mt-2 text-gray-400">Simplify your scheduling, one recurring event at a time.</p>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }
